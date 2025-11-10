@@ -1,10 +1,10 @@
 {
-  "D:\\Thinkpad\\satyam_d\\kairos\\falsenine-new-deployment\\server\\serverless.yml": {
+  "C:\\Users\\Sangeeta Bhosale\\OneDrive\\Desktop\\da-worldo\\server\\serverless.yml": {
     "versionFramework": "4.23.0",
-    "servicePath": "D:\\Thinkpad\\satyam_d\\kairos\\falsenine-new-deployment\\server\\serverless.yml",
+    "servicePath": "C:\\Users\\Sangeeta Bhosale\\OneDrive\\Desktop\\da-worldo\\server\\serverless.yml",
     "serviceConfigFileName": "serverless.yml",
     "service": {
-      "service": "falsenine-server",
+      "service": "Da-Worldo",
       "frameworkVersion": "4",
       "provider": {
         "name": "aws",
@@ -16,9 +16,8 @@
         "httpApi": {
           "cors": {
             "allowedOrigins": [
-              "https://www.falseninejersey.shop",
-              "https://falseninejersey.shop",
-              "http://localhost:3000"
+              "https://da-worldo.vercel.app/",
+              "https://main.d1m4xsek908zi3.amplifyapp.com"
             ],
             "allowedMethods": [
               "GET",
@@ -30,7 +29,8 @@
             "allowedHeaders": [
               "Content-Type",
               "Authorization"
-            ]
+            ],
+            "allowCredentials": "<REDACTED>"
           }
         },
         "environment": {
@@ -70,7 +70,7 @@
             "ApiLogGroup": {
               "Type": "AWS::Logs::LogGroup",
               "Properties": {
-                "LogGroupName": "/aws/lambda/falsenine-server-prod-api"
+                "LogGroupName": "/aws/lambda/Da-Worldo-prod-api"
               }
             },
             "IamRoleLambdaExecution": {
@@ -98,7 +98,7 @@
                       "Fn::Join": [
                         "-",
                         [
-                          "falsenine-server",
+                          "Da-Worldo",
                           "prod",
                           "lambda"
                         ]
@@ -116,7 +116,7 @@
                           ],
                           "Resource": [
                             {
-                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/falsenine-server-prod*:*"
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Da-Worldo-prod*:*"
                             }
                           ]
                         },
@@ -127,7 +127,7 @@
                           ],
                           "Resource": [
                             {
-                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/falsenine-server-prod*:*:*"
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Da-Worldo-prod*:*:*"
                             }
                           ]
                         },
@@ -156,7 +156,7 @@
                   "Fn::Join": [
                     "-",
                     [
-                      "falsenine-server",
+                      "Da-Worldo",
                       "prod",
                       {
                         "Ref": "AWS::Region"
@@ -172,11 +172,11 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
-                  "S3Key": "serverless/falsenine-server/prod/1762794886822-2025-11-10T17:14:46.822Z/falsenine-server.zip"
+                  "S3Key": "serverless/Da-Worldo/prod/1762814949604-2025-11-10T22:49:09.604Z/Da-Worldo.zip"
                 },
                 "Handler": "dist/handler.handler",
                 "Runtime": "nodejs20.x",
-                "FunctionName": "falsenine-server-prod-api",
+                "FunctionName": "Da-Worldo-prod-api",
                 "MemorySize": 512,
                 "Timeout": 30,
                 "Environment": {
@@ -199,20 +199,20 @@
                 "ApiLogGroup"
               ]
             },
-            "ApiLambdaVersionkBKdtMD8kEKrKlfmQN6cd7NZqGchASnkgucMWuKvqM": {
+            "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "ApiLambdaFunction"
                 },
-                "CodeSha256": "Wbc+p8mJw0VLJbegLC5W+VOueUgq7S8TyCdbVPARkWw="
+                "CodeSha256": "68j7zKe/fTQHMqAOi7qmGmGvUrGY2+taFQqcquF0RxQ="
               }
             },
             "HttpApi": {
               "Type": "AWS::ApiGatewayV2::Api",
               "Properties": {
-                "Name": "prod-falsenine-server",
+                "Name": "prod-Da-Worldo",
                 "ProtocolType": "HTTP",
                 "CorsConfiguration": {
                   "AllowCredentials": "<REDACTED>",
@@ -228,9 +228,8 @@
                     "OPTIONS"
                   ],
                   "AllowOrigins": [
-                    "https://www.falseninejersey.shop",
-                    "https://falseninejersey.shop",
-                    "http://localhost:3000"
+                    "https://da-worldo.vercel.app/",
+                    "https://main.d1m4xsek908zi3.amplifyapp.com"
                   ]
                 }
               }
@@ -302,13 +301,34 @@
                 "TimeoutInMillis": 30000
               }
             },
-            "HttpApiRouteDefault": {
+            "HttpApiRouteAny": {
               "Type": "AWS::ApiGatewayV2::Route",
               "Properties": {
                 "ApiId": {
                   "Ref": "HttpApi"
                 },
-                "RouteKey": "$default",
+                "RouteKey": "ANY /",
+                "Target": {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      "integrations",
+                      {
+                        "Ref": "HttpApiIntegrationApi"
+                      }
+                    ]
+                  ]
+                }
+              },
+              "DependsOn": "HttpApiIntegrationApi"
+            },
+            "HttpApiRouteAnyProxyVar": {
+              "Type": "AWS::ApiGatewayV2::Route",
+              "Properties": {
+                "ApiId": {
+                  "Ref": "HttpApi"
+                },
+                "RouteKey": "ANY /{proxy+}",
                 "Target": {
                   "Fn::Join": [
                     "/",
@@ -328,16 +348,16 @@
             "ServerlessDeploymentBucketName": {
               "Value": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
               "Export": {
-                "Name": "sls-falsenine-server-prod-ServerlessDeploymentBucketName"
+                "Name": "sls-Da-Worldo-prod-ServerlessDeploymentBucketName"
               }
             },
             "ApiLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "ApiLambdaVersionkBKdtMD8kEKrKlfmQN6cd7NZqGchASnkgucMWuKvqM"
+                "Ref": "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY"
               },
               "Export": {
-                "Name": "sls-falsenine-server-prod-ApiLambdaFunctionQualifiedArn"
+                "Name": "sls-Da-Worldo-prod-ApiLambdaFunctionQualifiedArn"
               }
             },
             "HttpApiId": {
@@ -346,7 +366,7 @@
                 "Ref": "HttpApi"
               },
               "Export": {
-                "Name": "sls-falsenine-server-prod-HttpApiId"
+                "Name": "sls-Da-Worldo-prod-HttpApiId"
               }
             },
             "HttpApiUrl": {
@@ -371,7 +391,7 @@
                 ]
               },
               "Export": {
-                "Name": "sls-falsenine-server-prod-HttpApiUrl"
+                "Name": "sls-Da-Worldo-prod-HttpApiUrl"
               }
             }
           }
@@ -383,17 +403,29 @@
           "handler": "dist/handler.handler",
           "events": [
             {
-              "httpApi": "*",
-              "resolvedMethod": "ANY"
+              "httpApi": {
+                "path": "/",
+                "method": "ANY"
+              },
+              "resolvedMethod": "ANY",
+              "resolvedPath": "/"
+            },
+            {
+              "httpApi": {
+                "path": "/{proxy+}",
+                "method": "ANY"
+              },
+              "resolvedMethod": "ANY",
+              "resolvedPath": "/{proxy+}"
             }
           ],
-          "name": "falsenine-server-prod-api",
+          "name": "Da-Worldo-prod-api",
           "package": {},
           "memory": 512,
           "timeout": 30,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "ApiLambdaVersionkBKdtMD8kEKrKlfmQN6cd7NZqGchASnkgucMWuKvqM"
+          "versionLogicalId": "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY"
         }
       },
       "package": {
@@ -406,10 +438,10 @@
           "!.git/**",
           "!**/*.ts"
         ],
-        "artifactsS3KeyDirname": "serverless/falsenine-server/prod/code-artifacts",
+        "artifactsS3KeyDirname": "serverless/Da-Worldo/prod/code-artifacts",
         "deploymentBucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
-        "artifact": "D:\\Thinkpad\\satyam_d\\kairos\\falsenine-new-deployment\\server\\.serverless\\falsenine-server.zip",
-        "artifactDirectoryName": "serverless/falsenine-server/prod/1762794886822-2025-11-10T17:14:46.822Z"
+        "artifact": "C:\\Users\\Sangeeta Bhosale\\OneDrive\\Desktop\\da-worldo\\server\\.serverless\\Da-Worldo.zip",
+        "artifactDirectoryName": "serverless/Da-Worldo/prod/1762814949604-2025-11-10T22:49:09.604Z"
       },
       "plugins": [
         "serverless-dotenv-plugin"
@@ -425,9 +457,8 @@
       "httpApi": {
         "cors": {
           "allowedOrigins": [
-            "https://www.falseninejersey.shop",
-            "https://falseninejersey.shop",
-            "http://localhost:3000"
+            "https://da-worldo.vercel.app/",
+            "https://main.d1m4xsek908zi3.amplifyapp.com"
           ],
           "allowedMethods": [
             "GET",
@@ -439,7 +470,8 @@
           "allowedHeaders": [
             "Content-Type",
             "Authorization"
-          ]
+          ],
+          "allowCredentials": "<REDACTED>"
         }
       },
       "environment": {
@@ -479,7 +511,7 @@
           "ApiLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/falsenine-server-prod-api"
+              "LogGroupName": "/aws/lambda/Da-Worldo-prod-api"
             }
           },
           "IamRoleLambdaExecution": {
@@ -507,7 +539,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "falsenine-server",
+                        "Da-Worldo",
                         "prod",
                         "lambda"
                       ]
@@ -525,7 +557,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/falsenine-server-prod*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Da-Worldo-prod*:*"
                           }
                         ]
                       },
@@ -536,7 +568,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/falsenine-server-prod*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Da-Worldo-prod*:*:*"
                           }
                         ]
                       },
@@ -565,7 +597,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "falsenine-server",
+                    "Da-Worldo",
                     "prod",
                     {
                       "Ref": "AWS::Region"
@@ -581,11 +613,11 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
-                "S3Key": "serverless/falsenine-server/prod/1762794886822-2025-11-10T17:14:46.822Z/falsenine-server.zip"
+                "S3Key": "serverless/Da-Worldo/prod/1762814949604-2025-11-10T22:49:09.604Z/Da-Worldo.zip"
               },
               "Handler": "dist/handler.handler",
               "Runtime": "nodejs20.x",
-              "FunctionName": "falsenine-server-prod-api",
+              "FunctionName": "Da-Worldo-prod-api",
               "MemorySize": 512,
               "Timeout": 30,
               "Environment": {
@@ -608,20 +640,20 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersionkBKdtMD8kEKrKlfmQN6cd7NZqGchASnkgucMWuKvqM": {
+          "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "Wbc+p8mJw0VLJbegLC5W+VOueUgq7S8TyCdbVPARkWw="
+              "CodeSha256": "68j7zKe/fTQHMqAOi7qmGmGvUrGY2+taFQqcquF0RxQ="
             }
           },
           "HttpApi": {
             "Type": "AWS::ApiGatewayV2::Api",
             "Properties": {
-              "Name": "prod-falsenine-server",
+              "Name": "prod-Da-Worldo",
               "ProtocolType": "HTTP",
               "CorsConfiguration": {
                 "AllowCredentials": "<REDACTED>",
@@ -637,9 +669,8 @@
                   "OPTIONS"
                 ],
                 "AllowOrigins": [
-                  "https://www.falseninejersey.shop",
-                  "https://falseninejersey.shop",
-                  "http://localhost:3000"
+                  "https://da-worldo.vercel.app/",
+                  "https://main.d1m4xsek908zi3.amplifyapp.com"
                 ]
               }
             }
@@ -711,13 +742,34 @@
               "TimeoutInMillis": 30000
             }
           },
-          "HttpApiRouteDefault": {
+          "HttpApiRouteAny": {
             "Type": "AWS::ApiGatewayV2::Route",
             "Properties": {
               "ApiId": {
                 "Ref": "HttpApi"
               },
-              "RouteKey": "$default",
+              "RouteKey": "ANY /",
+              "Target": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "integrations",
+                    {
+                      "Ref": "HttpApiIntegrationApi"
+                    }
+                  ]
+                ]
+              }
+            },
+            "DependsOn": "HttpApiIntegrationApi"
+          },
+          "HttpApiRouteAnyProxyVar": {
+            "Type": "AWS::ApiGatewayV2::Route",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "RouteKey": "ANY /{proxy+}",
               "Target": {
                 "Fn::Join": [
                   "/",
@@ -737,16 +789,16 @@
           "ServerlessDeploymentBucketName": {
             "Value": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
             "Export": {
-              "Name": "sls-falsenine-server-prod-ServerlessDeploymentBucketName"
+              "Name": "sls-Da-Worldo-prod-ServerlessDeploymentBucketName"
             }
           },
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersionkBKdtMD8kEKrKlfmQN6cd7NZqGchASnkgucMWuKvqM"
+              "Ref": "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY"
             },
             "Export": {
-              "Name": "sls-falsenine-server-prod-ApiLambdaFunctionQualifiedArn"
+              "Name": "sls-Da-Worldo-prod-ApiLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -755,7 +807,7 @@
               "Ref": "HttpApi"
             },
             "Export": {
-              "Name": "sls-falsenine-server-prod-HttpApiId"
+              "Name": "sls-Da-Worldo-prod-HttpApiId"
             }
           },
           "HttpApiUrl": {
@@ -780,7 +832,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-falsenine-server-prod-HttpApiUrl"
+              "Name": "sls-Da-Worldo-prod-HttpApiUrl"
             }
           }
         }
@@ -796,7 +848,7 @@
       "serviceProvider": null,
       "instanceParameters": null
     },
-    "serviceRawFile": "service: falsenine-server\r\nframeworkVersion: \"4\"\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs20.x\r\n  region: ap-south-1\r\n  stage: prod\r\n  memorySize: 512\r\n  timeout: 30\r\n  httpApi:\r\n    cors:\r\n      allowedOrigins:\r\n        - https://www.falseninejersey.shop\r\n        - https://falseninejersey.shop\r\n        - http://localhost:3000\r\n      allowedMethods:\r\n        - GET\r\n        - POST\r\n        - PUT\r\n        - DELETE\r\n        - OPTIONS\r\n      allowedHeaders:\r\n        - Content-Type\r\n        - Authorization\r\n  environment:\r\n    DYNAMODB_TABLE_NAME: EcommerceData\r\n    CONTACT_TABLE_NAME: contact\r\n    RAZORPAY_KEY_ID: ${env:RAZORPAY_KEY_ID}\r\n    RAZORPAY_KEY_SECRET: ${env:RAZORPAY_KEY_SECRET}\r\n\r\n  iam:\r\n    role:\r\n      statements:\r\n        - Effect: Allow\r\n          Action:\r\n            - dynamodb:PutItem\r\n            - dynamodb:GetItem\r\n            - dynamodb:Query\r\n            - dynamodb:Scan\r\n            - dynamodb:UpdateItem\r\n            - dynamodb:DescribeTable\r\n          Resource:\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/EcommerceData\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/EcommerceData/index/GSI1\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/contact\r\n\r\nfunctions:\r\n  api:\r\n    handler: dist/handler.handler\r\n    events:\r\n      - httpApi: \"*\"\r\n\r\npackage:\r\n  patterns:\r\n    - dist/**\r\n    - node_modules/**\r\n    - package.json\r\n    - package-lock.json\r\n    - \"!src/**\"\r\n    - \"!.git/**\"\r\n    - \"!**/*.ts\"\r\n\r\nplugins:\r\n  - serverless-dotenv-plugin",
+    "serviceRawFile": "service: Da-Worldo\r\nframeworkVersion: \"4\"\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs20.x\r\n  region: ap-south-1\r\n  stage: dev\r\n  memorySize: 512\r\n  timeout: 30\r\n  httpApi:\r\n    cors:\r\n      allowedOrigins:\r\n        - https://da-worldo.vercel.app/\r\n        - https://main.d1m4xsek908zi3.amplifyapp.com\r\n      allowedMethods:\r\n        - GET\r\n        - POST\r\n        - PUT\r\n        - DELETE\r\n        - OPTIONS\r\n      allowedHeaders:\r\n        - Content-Type\r\n        - Authorization\r\n      allowCredentials: true\r\n  environment:\r\n    DYNAMODB_TABLE_NAME: EcommerceData\r\n    CONTACT_TABLE_NAME: contact\r\n    RAZORPAY_KEY_ID: ${env:RAZORPAY_KEY_ID}\r\n    RAZORPAY_KEY_SECRET: ${env:RAZORPAY_KEY_SECRET}\r\n\r\n  iam:\r\n    role:\r\n      statements:\r\n        - Effect: Allow\r\n          Action:\r\n            - dynamodb:PutItem\r\n            - dynamodb:GetItem\r\n            - dynamodb:Query\r\n            - dynamodb:Scan\r\n            - dynamodb:UpdateItem\r\n            - dynamodb:DescribeTable\r\n          Resource:\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/EcommerceData\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/EcommerceData/index/GSI1\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/contact\r\n\r\nfunctions:\r\n  api:\r\n    handler: dist/handler.handler\r\n    events:\r\n      # CRITICAL FIX: Properly configure all routes\r\n      - httpApi:\r\n          path: /\r\n          method: ANY\r\n      - httpApi:\r\n          path: /{proxy+}\r\n          method: ANY\r\n\r\npackage:\r\n  patterns:\r\n    - dist/**\r\n    - node_modules/**\r\n    - package.json\r\n    - package-lock.json\r\n    - \"!src/**\"\r\n    - \"!.git/**\"\r\n    - \"!**/*.ts\"\r\n\r\nplugins:\r\n  - serverless-dotenv-plugin\r\n",
     "command": [
       "deploy"
     ],
@@ -809,34 +861,34 @@
     "userId": "GwX4RcGjBqVshkLcRn",
     "userName": "falsenine",
     "serviceProviderAwsAccountId": "820007222352",
-    "serviceProviderAwsCfStackName": "falsenine-server-prod",
-    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:ap-south-1:820007222352:stack/falsenine-server-prod/43bdb230-be4d-11f0-8e6b-06950d08d5d5",
-    "serviceProviderAwsCfStackCreated": "2025-11-10T15:52:30.759Z",
-    "serviceProviderAwsCfStackUpdated": "2025-11-10T17:04:50.946Z",
+    "serviceProviderAwsCfStackName": "Da-Worldo-prod",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:ap-south-1:820007222352:stack/Da-Worldo-prod/2a772fe0-be84-11f0-b44a-02e78c067089",
+    "serviceProviderAwsCfStackCreated": "2025-11-10T22:25:30.669Z",
+    "serviceProviderAwsCfStackUpdated": "2025-11-10T22:38:13.707Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "ApiLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:ap-south-1:820007222352:function:falsenine-server-prod-api:4",
+        "OutputValue": "arn:aws:lambda:ap-south-1:820007222352:function:Da-Worldo-prod-api:2",
         "Description": "Current Lambda function version",
-        "ExportName": "sls-falsenine-server-prod-ApiLambdaFunctionQualifiedArn"
+        "ExportName": "sls-Da-Worldo-prod-ApiLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "HttpApiId",
-        "OutputValue": "o88cljk2g0",
+        "OutputValue": "l90z88bsje",
         "Description": "Id of the HTTP API",
-        "ExportName": "sls-falsenine-server-prod-HttpApiId"
+        "ExportName": "sls-Da-Worldo-prod-HttpApiId"
       },
       {
         "OutputKey": "ServerlessDeploymentBucketName",
         "OutputValue": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
-        "ExportName": "sls-falsenine-server-prod-ServerlessDeploymentBucketName"
+        "ExportName": "sls-Da-Worldo-prod-ServerlessDeploymentBucketName"
       },
       {
         "OutputKey": "HttpApiUrl",
-        "OutputValue": "https://o88cljk2g0.execute-api.ap-south-1.amazonaws.com",
+        "OutputValue": "https://l90z88bsje.execute-api.ap-south-1.amazonaws.com",
         "Description": "URL of the HTTP API",
-        "ExportName": "sls-falsenine-server-prod-HttpApiUrl"
+        "ExportName": "sls-Da-Worldo-prod-HttpApiUrl"
       }
     ],
     "compiledCloudFormationTemplate": {
@@ -846,7 +898,7 @@
         "ApiLogGroup": {
           "Type": "AWS::Logs::LogGroup",
           "Properties": {
-            "LogGroupName": "/aws/lambda/falsenine-server-prod-api"
+            "LogGroupName": "/aws/lambda/Da-Worldo-prod-api"
           }
         },
         "IamRoleLambdaExecution": {
@@ -874,7 +926,7 @@
                   "Fn::Join": [
                     "-",
                     [
-                      "falsenine-server",
+                      "Da-Worldo",
                       "prod",
                       "lambda"
                     ]
@@ -892,7 +944,7 @@
                       ],
                       "Resource": [
                         {
-                          "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/falsenine-server-prod*:*"
+                          "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Da-Worldo-prod*:*"
                         }
                       ]
                     },
@@ -903,7 +955,7 @@
                       ],
                       "Resource": [
                         {
-                          "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/falsenine-server-prod*:*:*"
+                          "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Da-Worldo-prod*:*:*"
                         }
                       ]
                     },
@@ -932,7 +984,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "falsenine-server",
+                  "Da-Worldo",
                   "prod",
                   {
                     "Ref": "AWS::Region"
@@ -948,11 +1000,11 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
-              "S3Key": "serverless/falsenine-server/prod/1762794886822-2025-11-10T17:14:46.822Z/falsenine-server.zip"
+              "S3Key": "serverless/Da-Worldo/prod/1762814949604-2025-11-10T22:49:09.604Z/Da-Worldo.zip"
             },
             "Handler": "dist/handler.handler",
             "Runtime": "nodejs20.x",
-            "FunctionName": "falsenine-server-prod-api",
+            "FunctionName": "Da-Worldo-prod-api",
             "MemorySize": 512,
             "Timeout": 30,
             "Environment": {
@@ -975,22 +1027,23 @@
             "ApiLogGroup"
           ]
         },
-        "ApiLambdaVersionkBKdtMD8kEKrKlfmQN6cd7NZqGchASnkgucMWuKvqM": {
+        "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "ApiLambdaFunction"
             },
-            "CodeSha256": "Wbc+p8mJw0VLJbegLC5W+VOueUgq7S8TyCdbVPARkWw="
+            "CodeSha256": "68j7zKe/fTQHMqAOi7qmGmGvUrGY2+taFQqcquF0RxQ="
           }
         },
         "HttpApi": {
           "Type": "AWS::ApiGatewayV2::Api",
           "Properties": {
-            "Name": "prod-falsenine-server",
+            "Name": "prod-Da-Worldo",
             "ProtocolType": "HTTP",
             "CorsConfiguration": {
+              "AllowCredentials": "<REDACTED>",
               "AllowHeaders": [
                 "Content-Type",
                 "Authorization"
@@ -1003,9 +1056,8 @@
                 "OPTIONS"
               ],
               "AllowOrigins": [
-                "https://www.falseninejersey.shop",
-                "https://falseninejersey.shop",
-                "http://localhost:3000"
+                "https://da-worldo.vercel.app/",
+                "https://main.d1m4xsek908zi3.amplifyapp.com"
               ]
             }
           }
@@ -1077,13 +1129,34 @@
             "TimeoutInMillis": 30000
           }
         },
-        "HttpApiRouteDefault": {
+        "HttpApiRouteAny": {
           "Type": "AWS::ApiGatewayV2::Route",
           "Properties": {
             "ApiId": {
               "Ref": "HttpApi"
             },
-            "RouteKey": "$default",
+            "RouteKey": "ANY /",
+            "Target": {
+              "Fn::Join": [
+                "/",
+                [
+                  "integrations",
+                  {
+                    "Ref": "HttpApiIntegrationApi"
+                  }
+                ]
+              ]
+            }
+          },
+          "DependsOn": "HttpApiIntegrationApi"
+        },
+        "HttpApiRouteAnyProxyVar": {
+          "Type": "AWS::ApiGatewayV2::Route",
+          "Properties": {
+            "ApiId": {
+              "Ref": "HttpApi"
+            },
+            "RouteKey": "ANY /{proxy+}",
             "Target": {
               "Fn::Join": [
                 "/",
@@ -1103,16 +1176,16 @@
         "ServerlessDeploymentBucketName": {
           "Value": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
           "Export": {
-            "Name": "sls-falsenine-server-prod-ServerlessDeploymentBucketName"
+            "Name": "sls-Da-Worldo-prod-ServerlessDeploymentBucketName"
           }
         },
         "ApiLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "ApiLambdaVersionkBKdtMD8kEKrKlfmQN6cd7NZqGchASnkgucMWuKvqM"
+            "Ref": "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY"
           },
           "Export": {
-            "Name": "sls-falsenine-server-prod-ApiLambdaFunctionQualifiedArn"
+            "Name": "sls-Da-Worldo-prod-ApiLambdaFunctionQualifiedArn"
           }
         },
         "HttpApiId": {
@@ -1121,7 +1194,7 @@
             "Ref": "HttpApi"
           },
           "Export": {
-            "Name": "sls-falsenine-server-prod-HttpApiId"
+            "Name": "sls-Da-Worldo-prod-HttpApiId"
           }
         },
         "HttpApiUrl": {
@@ -1146,7 +1219,7 @@
             ]
           },
           "Export": {
-            "Name": "sls-falsenine-server-prod-HttpApiUrl"
+            "Name": "sls-Da-Worldo-prod-HttpApiUrl"
           }
         }
       }
