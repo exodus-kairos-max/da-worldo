@@ -1,19 +1,16 @@
-service: falsenine-server
+service: Da-Worldo
 frameworkVersion: "4"
 
 provider:
   name: aws
   runtime: nodejs20.x
   region: ap-south-1
-  stage: prod
+  stage: dev
   memorySize: 512
   timeout: 30
   httpApi:
     cors:
       allowedOrigins:
-        - https://www.falseninejersey.shop
-        - https://falseninejersey.shop
-        - http://localhost:3000
         - https://falsenine-ggs.vercel.app
       allowedMethods:
         - GET
