@@ -157,7 +157,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
-                "S3Key": "serverless/Da-Worldo/prod/1762815346160-2025-11-10T22:55:46.160Z/Da-Worldo.zip"
+                "S3Key": "serverless/Da-Worldo/prod/1762815860654-2025-11-10T23:04:20.654Z/Da-Worldo.zip"
               },
               "Handler": "dist/handler.handler",
               "Runtime": "nodejs20.x",
@@ -184,14 +184,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4": {
+          "ApiLambdaVersionc077bHQJuY65nPkPvq98pdTU1upNfniIqV0bwpPV8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "8GpBLtuB301PAsnBrV1U3uXi6RJCuRJSG6P7/JWlJpA="
+              "CodeSha256": "KW2EqPkCxmzHH0cOXZdrU5tZOOuEs6ixh7t747jjO4U="
             }
           },
           "HttpApi": {
@@ -336,7 +336,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4"
+              "Ref": "ApiLambdaVersionc077bHQJuY65nPkPvq98pdTU1upNfniIqV0bwpPV8"
             },
             "Export": {
               "Name": "sls-Da-Worldo-prod-ApiLambdaFunctionQualifiedArn"
@@ -411,7 +411,7 @@
         "timeout": 30,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4"
+        "versionLogicalId": "ApiLambdaVersionc077bHQJuY65nPkPvq98pdTU1upNfniIqV0bwpPV8"
       }
     },
     "configValidationMode": "warn",
@@ -438,7 +438,7 @@
         "artifactsS3KeyDirname": "serverless/Da-Worldo/prod/code-artifacts",
         "deploymentBucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
         "artifact": "C:\\Users\\Sangeeta Bhosale\\OneDrive\\Desktop\\da-worldo\\server\\.serverless\\Da-Worldo.zip",
-        "artifactDirectoryName": "serverless/Da-Worldo/prod/1762815346160-2025-11-10T22:55:46.160Z"
+        "artifactDirectoryName": "serverless/Da-Worldo/prod/1762815860654-2025-11-10T23:04:20.654Z"
       },
       "plugins": {
         "$ref": "$[\"service\"][\"plugins\"]"
@@ -450,7 +450,7 @@
     "artifact": "C:\\Users\\Sangeeta Bhosale\\OneDrive\\Desktop\\da-worldo\\server\\.serverless\\Da-Worldo.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/Da-Worldo/prod/1762815346160-2025-11-10T22:55:46.160Z",
+    "artifactDirectoryName": "serverless/Da-Worldo/prod/1762815860654-2025-11-10T23:04:20.654Z",
     "artifact": "Da-Worldo.zip"
   }
 }

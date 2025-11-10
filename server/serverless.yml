@@ -12,7 +12,6 @@ provider:
     cors:
       allowedOrigins:
         - https://da-worldo.vercel.app
-        - https://main.d1m4xsek908zi3.amplifyapp.com
       allowedMethods:
         - GET
         - POST
