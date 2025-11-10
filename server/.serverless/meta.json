@@ -16,7 +16,7 @@
         "httpApi": {
           "cors": {
             "allowedOrigins": [
-              "https://da-worldo.vercel.app/",
+              "https://da-worldo.vercel.app",
               "https://main.d1m4xsek908zi3.amplifyapp.com"
             ],
             "allowedMethods": [
@@ -172,7 +172,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
-                  "S3Key": "serverless/Da-Worldo/prod/1762814949604-2025-11-10T22:49:09.604Z/Da-Worldo.zip"
+                  "S3Key": "serverless/Da-Worldo/prod/1762815346160-2025-11-10T22:55:46.160Z/Da-Worldo.zip"
                 },
                 "Handler": "dist/handler.handler",
                 "Runtime": "nodejs20.x",
@@ -199,14 +199,14 @@
                 "ApiLogGroup"
               ]
             },
-            "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY": {
+            "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "ApiLambdaFunction"
                 },
-                "CodeSha256": "68j7zKe/fTQHMqAOi7qmGmGvUrGY2+taFQqcquF0RxQ="
+                "CodeSha256": "8GpBLtuB301PAsnBrV1U3uXi6RJCuRJSG6P7/JWlJpA="
               }
             },
             "HttpApi": {
@@ -228,7 +228,7 @@
                     "OPTIONS"
                   ],
                   "AllowOrigins": [
-                    "https://da-worldo.vercel.app/",
+                    "https://da-worldo.vercel.app",
                     "https://main.d1m4xsek908zi3.amplifyapp.com"
                   ]
                 }
@@ -354,7 +354,7 @@
             "ApiLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY"
+                "Ref": "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4"
               },
               "Export": {
                 "Name": "sls-Da-Worldo-prod-ApiLambdaFunctionQualifiedArn"
@@ -425,7 +425,7 @@
           "timeout": 30,
           "runtime": "nodejs20.x",
           "vpc": {},
-          "versionLogicalId": "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY"
+          "versionLogicalId": "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4"
         }
       },
       "package": {
@@ -441,7 +441,7 @@
         "artifactsS3KeyDirname": "serverless/Da-Worldo/prod/code-artifacts",
         "deploymentBucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
         "artifact": "C:\\Users\\Sangeeta Bhosale\\OneDrive\\Desktop\\da-worldo\\server\\.serverless\\Da-Worldo.zip",
-        "artifactDirectoryName": "serverless/Da-Worldo/prod/1762814949604-2025-11-10T22:49:09.604Z"
+        "artifactDirectoryName": "serverless/Da-Worldo/prod/1762815346160-2025-11-10T22:55:46.160Z"
       },
       "plugins": [
         "serverless-dotenv-plugin"
@@ -457,7 +457,7 @@
       "httpApi": {
         "cors": {
           "allowedOrigins": [
-            "https://da-worldo.vercel.app/",
+            "https://da-worldo.vercel.app",
             "https://main.d1m4xsek908zi3.amplifyapp.com"
           ],
           "allowedMethods": [
@@ -613,7 +613,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
-                "S3Key": "serverless/Da-Worldo/prod/1762814949604-2025-11-10T22:49:09.604Z/Da-Worldo.zip"
+                "S3Key": "serverless/Da-Worldo/prod/1762815346160-2025-11-10T22:55:46.160Z/Da-Worldo.zip"
               },
               "Handler": "dist/handler.handler",
               "Runtime": "nodejs20.x",
@@ -640,14 +640,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY": {
+          "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "68j7zKe/fTQHMqAOi7qmGmGvUrGY2+taFQqcquF0RxQ="
+              "CodeSha256": "8GpBLtuB301PAsnBrV1U3uXi6RJCuRJSG6P7/JWlJpA="
             }
           },
           "HttpApi": {
@@ -669,7 +669,7 @@
                   "OPTIONS"
                 ],
                 "AllowOrigins": [
-                  "https://da-worldo.vercel.app/",
+                  "https://da-worldo.vercel.app",
                   "https://main.d1m4xsek908zi3.amplifyapp.com"
                 ]
               }
@@ -795,7 +795,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY"
+              "Ref": "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4"
             },
             "Export": {
               "Name": "sls-Da-Worldo-prod-ApiLambdaFunctionQualifiedArn"
@@ -848,7 +848,7 @@
       "serviceProvider": null,
       "instanceParameters": null
     },
-    "serviceRawFile": "service: Da-Worldo\r\nframeworkVersion: \"4\"\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs20.x\r\n  region: ap-south-1\r\n  stage: dev\r\n  memorySize: 512\r\n  timeout: 30\r\n  httpApi:\r\n    cors:\r\n      allowedOrigins:\r\n        - https://da-worldo.vercel.app/\r\n        - https://main.d1m4xsek908zi3.amplifyapp.com\r\n      allowedMethods:\r\n        - GET\r\n        - POST\r\n        - PUT\r\n        - DELETE\r\n        - OPTIONS\r\n      allowedHeaders:\r\n        - Content-Type\r\n        - Authorization\r\n      allowCredentials: true\r\n  environment:\r\n    DYNAMODB_TABLE_NAME: EcommerceData\r\n    CONTACT_TABLE_NAME: contact\r\n    RAZORPAY_KEY_ID: ${env:RAZORPAY_KEY_ID}\r\n    RAZORPAY_KEY_SECRET: ${env:RAZORPAY_KEY_SECRET}\r\n\r\n  iam:\r\n    role:\r\n      statements:\r\n        - Effect: Allow\r\n          Action:\r\n            - dynamodb:PutItem\r\n            - dynamodb:GetItem\r\n            - dynamodb:Query\r\n            - dynamodb:Scan\r\n            - dynamodb:UpdateItem\r\n            - dynamodb:DescribeTable\r\n          Resource:\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/EcommerceData\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/EcommerceData/index/GSI1\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/contact\r\n\r\nfunctions:\r\n  api:\r\n    handler: dist/handler.handler\r\n    events:\r\n      # CRITICAL FIX: Properly configure all routes\r\n      - httpApi:\r\n          path: /\r\n          method: ANY\r\n      - httpApi:\r\n          path: /{proxy+}\r\n          method: ANY\r\n\r\npackage:\r\n  patterns:\r\n    - dist/**\r\n    - node_modules/**\r\n    - package.json\r\n    - package-lock.json\r\n    - \"!src/**\"\r\n    - \"!.git/**\"\r\n    - \"!**/*.ts\"\r\n\r\nplugins:\r\n  - serverless-dotenv-plugin\r\n",
+    "serviceRawFile": "service: Da-Worldo\r\nframeworkVersion: \"4\"\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs20.x\r\n  region: ap-south-1\r\n  stage: dev\r\n  memorySize: 512\r\n  timeout: 30\r\n  httpApi:\r\n    cors:\r\n      allowedOrigins:\r\n        - https://da-worldo.vercel.app\r\n        - https://main.d1m4xsek908zi3.amplifyapp.com\r\n      allowedMethods:\r\n        - GET\r\n        - POST\r\n        - PUT\r\n        - DELETE\r\n        - OPTIONS\r\n      allowedHeaders:\r\n        - Content-Type\r\n        - Authorization\r\n      allowCredentials: true\r\n  environment:\r\n    DYNAMODB_TABLE_NAME: EcommerceData\r\n    CONTACT_TABLE_NAME: contact\r\n    RAZORPAY_KEY_ID: ${env:RAZORPAY_KEY_ID}\r\n    RAZORPAY_KEY_SECRET: ${env:RAZORPAY_KEY_SECRET}\r\n\r\n  iam:\r\n    role:\r\n      statements:\r\n        - Effect: Allow\r\n          Action:\r\n            - dynamodb:PutItem\r\n            - dynamodb:GetItem\r\n            - dynamodb:Query\r\n            - dynamodb:Scan\r\n            - dynamodb:UpdateItem\r\n            - dynamodb:DescribeTable\r\n          Resource:\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/EcommerceData\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/EcommerceData/index/GSI1\r\n            - arn:aws:dynamodb:${self:provider.region}:*:table/contact\r\n\r\nfunctions:\r\n  api:\r\n    handler: dist/handler.handler\r\n    events:\r\n      # CRITICAL FIX: Properly configure all routes\r\n      - httpApi:\r\n          path: /\r\n          method: ANY\r\n      - httpApi:\r\n          path: /{proxy+}\r\n          method: ANY\r\n\r\npackage:\r\n  patterns:\r\n    - dist/**\r\n    - node_modules/**\r\n    - package.json\r\n    - package-lock.json\r\n    - \"!src/**\"\r\n    - \"!.git/**\"\r\n    - \"!**/*.ts\"\r\n\r\nplugins:\r\n  - serverless-dotenv-plugin\r\n",
     "command": [
       "deploy"
     ],
@@ -864,12 +864,12 @@
     "serviceProviderAwsCfStackName": "Da-Worldo-prod",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:ap-south-1:820007222352:stack/Da-Worldo-prod/2a772fe0-be84-11f0-b44a-02e78c067089",
     "serviceProviderAwsCfStackCreated": "2025-11-10T22:25:30.669Z",
-    "serviceProviderAwsCfStackUpdated": "2025-11-10T22:38:13.707Z",
+    "serviceProviderAwsCfStackUpdated": "2025-11-10T22:49:11.794Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "ApiLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:ap-south-1:820007222352:function:Da-Worldo-prod-api:2",
+        "OutputValue": "arn:aws:lambda:ap-south-1:820007222352:function:Da-Worldo-prod-api:3",
         "Description": "Current Lambda function version",
         "ExportName": "sls-Da-Worldo-prod-ApiLambdaFunctionQualifiedArn"
       },
@@ -1000,7 +1000,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-ap-south-1-ed626c72-b925",
-              "S3Key": "serverless/Da-Worldo/prod/1762814949604-2025-11-10T22:49:09.604Z/Da-Worldo.zip"
+              "S3Key": "serverless/Da-Worldo/prod/1762815346160-2025-11-10T22:55:46.160Z/Da-Worldo.zip"
             },
             "Handler": "dist/handler.handler",
             "Runtime": "nodejs20.x",
@@ -1027,14 +1027,14 @@
             "ApiLogGroup"
           ]
         },
-        "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY": {
+        "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "ApiLambdaFunction"
             },
-            "CodeSha256": "68j7zKe/fTQHMqAOi7qmGmGvUrGY2+taFQqcquF0RxQ="
+            "CodeSha256": "8GpBLtuB301PAsnBrV1U3uXi6RJCuRJSG6P7/JWlJpA="
           }
         },
         "HttpApi": {
@@ -1056,7 +1056,7 @@
                 "OPTIONS"
               ],
               "AllowOrigins": [
-                "https://da-worldo.vercel.app/",
+                "https://da-worldo.vercel.app",
                 "https://main.d1m4xsek908zi3.amplifyapp.com"
               ]
             }
@@ -1182,7 +1182,7 @@
         "ApiLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "ApiLambdaVersionRLDminGYeKlHVT7Ocek1J8n4rdBDLRtofb2OFmf3MY"
+            "Ref": "ApiLambdaVersionpeXVAUTETpGJeNtJr7z8ITeabZD9W9ejTmWeDOFd4"
           },
           "Export": {
             "Name": "sls-Da-Worldo-prod-ApiLambdaFunctionQualifiedArn"
